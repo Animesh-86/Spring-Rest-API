@@ -1,11 +1,18 @@
 package com.rest.webservices.restful_web_services.user;
 
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class User {
 
     private Integer id;
+
+    @Size(min = 3, max = 15,  message = "Name Should have 2 characters")
     private String name;
+
+    @PastOrPresent(message = "BirthDate should be in past")
     private LocalDate birthDate;
 
     @Override

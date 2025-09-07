@@ -12,9 +12,9 @@ public class UserDaoService {
     private static List<User> users = new ArrayList<>();
 
     static{
-        users.add(new User(1, "Krishna", LocalDate.now().minusYears(5000)));
-        users.add(new User(2, "Rukmani", LocalDate.now().minusYears(5000)));
-        users.add(new User(3, "Satyabhama", LocalDate.now().minusYears(5000)));
+        users.add(new User(1, "Animesh", LocalDate.now().minusYears(5000)));
+        users.add(new User(2, "Kajol", LocalDate.now().minusYears(5000)));
+        users.add(new User(3, "Aryan", LocalDate.now().minusYears(5000)));
     }
 
     public List<User> findAll(){
@@ -31,5 +31,13 @@ public class UserDaoService {
 
     public User findOne(int id){
         return users.stream().filter(u -> u.getId() == id).findFirst().orElse(null);
+    }
+
+    public User deleteById(int id) {
+        User user = findOne(id);
+        if (user != null) {
+            users.remove(user);
+        }
+        return user; // return the deleted user or null if not found
     }
 }
